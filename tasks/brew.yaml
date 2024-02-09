@@ -43,4 +43,5 @@
       - flipper
       - android-platform-tools
       - android-studio
+      - telegram-desktop
     state: present
