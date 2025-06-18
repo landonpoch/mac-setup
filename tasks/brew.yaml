@@ -26,7 +26,10 @@
       - mpv
       - xclip
       - ripgrep
-      - neovim     
+      - neovim    
+      - glfw
+      - cmake
+      - quicktype
     state: present
 
 - name: Install brew casks
