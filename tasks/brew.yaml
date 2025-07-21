@@ -30,6 +30,7 @@
       - glfw
       - cmake
       - quicktype
+      - stellar-cli
     state: present
 
 - name: Install brew casks
