@@ -4,6 +4,7 @@
     name:
     - facebook/fb
     - nearengine/tap
+    - stellar/tap
 
 - name: Install brew formulas
   community.general.homebrew:
@@ -30,7 +31,8 @@
       - glfw
       - cmake
       - quicktype
-      - stellar-cli
+      - soroban-cli
+      - mise
     state: present
 
 - name: Install brew casks
@@ -63,4 +65,5 @@
       - ioquake3
       - vlc
       - moonlight
+      - linear-linear
     state: present

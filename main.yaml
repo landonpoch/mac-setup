@@ -6,7 +6,7 @@
     ansible_python_interpreter: "{{ansible_playbook_python}}"
   tasks:
     - import_tasks: tasks/brew.yaml
-    - import_tasks: tasks/apps.yaml
+    # - import_tasks: tasks/apps.yaml
 
     - name: Install Oh My ZSH
       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
