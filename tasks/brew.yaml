@@ -17,7 +17,6 @@
       - yarn
       - mas
       - awscli
-      - asdf
       - idb-companion
       - nearengine/tap/fistbump
       - ffmpeg

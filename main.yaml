@@ -13,7 +13,10 @@
       args:
         creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
 
-    - import_tasks: tasks/asdf.yaml
+    # NOTE: ASDF has been retired in favor of mise
+    # Basically you can use the same .tool-versions file and you're good to go.
+    # Also, it works better and takes up much less space, and has built in direnv support.
+    - import_tasks: tasks/mise.yaml
 
     # TODO: This currently fails on python 3.13 but should be fixed in python 3.14
     # feel free to re-enable at that point.
@@ -40,7 +43,7 @@
         rm -rf tplay
         cd ~
 
-    - name: re-generate bins now we've installed additional binaries with asdf
-      shell: asdf reshim
+    # - name: re-generate bins now we've installed additional binaries with asdf
+    #   shell: asdf reshim
 
 # mpv needs to be installed from source to support libcaca video output

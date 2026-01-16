@@ -1,0 +1,31 @@
+---
+- name: "Create .tool-versions in home directory if it doesn't exist"
+  ansible.builtin.copy:
+    dest: "{{ local_home }}/.tool-versions"
+    force: no
+    content: |
+      node 25.2.1
+      python 3.14.2t
+      rust 1.92.0
+      java openjdk-21.0.2
+      terraform 1.7.3
+
+- name: "Trust mise config globally"
+  shell: mise trust --all
+  register: mise_trust_result
+  changed_when: "'trusted' in mise_trust_result.stdout"
+
+- name: "Install tools from .tool-versions"
+  shell: mise install
+  args:
+    chdir: "{{ local_home }}"
+  register: mise_install_result
+  changed_when: "'installed' in mise_install_result.stderr"
+
+- name: "Activate mise in .zshrc"
+  ansible.builtin.blockinfile:
+    path: "{{ local_home }}/.zshrc"
+    marker: "# {mark} MISE MANAGED BLOCK"
+    prepend_newline: true
+    block: |
+      eval "$(mise activate zsh)"
